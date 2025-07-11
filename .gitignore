@@ -1,0 +1,55 @@
+# Build outputs
+/dist/
+/.astro/
+/.vercel/
+/.netlify/
+
+# Dependencies
+/node_modules/
+/.pnpm-store/
+/.yarn/
+/.pnp*
+/.svelte-kit/
+
+# Cache and temp files
+/.cache/
+/.temp/
+/.idea/
+/.vscode/
+/.vs/
+*.swp
+*.swo
+*~
+
+# Environment variables
+.env
+.env.*
+!.env.example
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# System files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor directories and files
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Package manager files
+package-lock.json
+pnpm-lock.yaml
+yarn.lock
+bun.lockb

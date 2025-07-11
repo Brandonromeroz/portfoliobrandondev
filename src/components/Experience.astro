@@ -1,0 +1,51 @@
+---
+import ExperienceItem from "./ExperienceItem.astro";
+
+const EXPERIENCE = [
+  {
+    date: "2025",
+    title: "Desarrollador Web",
+    company: "Grupo AB (SKYDELIVER)",
+    description:
+      "Encargado del desarrollo de la plataforma web para gestión de pedidos mediante drones. Implementación de base de datos, API para comunicación con los drones, sistema de actualizaciones en tiempo real y medidas de seguridad para proteger la información del usuario y del sistema.",
+  },
+   {
+    date: "2024",
+    title: "Desarrollador Web",
+    company: "AI KOI (Fundación)",
+    description:
+      "Desarrollo de la plataforma e-learning, incluyendo la página principal y módulos interactivos para cursos online. Implementación de pasarelas de pago, gestión de usuarios y soporte técnico para la automatización de procesos educativos.",
+  },{
+    date: "Actualmente...",
+    title: "Creador de Contenido",
+    company: "Somos Brandon y Rubén TV",
+    description:
+      "Produzco contenido sobre tecnología y estilo de vida digital en YouTube, TikTok, Facebook e Instagram. Especializado en reviews de gadgets, vlogs, tutoriales y colaboraciones con marcas tecnológicas.",
+    link: "https://www.youtube.com/@BrandonYRubenTV",
+  },
+  {
+    date: "2025",
+    title: "Productor de Contenido y Editor",
+    company: "Somos Brandon y Rubén TV",
+    description:
+      "Responsable de la edición, dirección creativa y producción de contenido en video. Uso de herramientas como DaVinci Resolve, Premiere Pro, CapCut y Photoshop para crear contenido atractivo.",
+  },
+ 
+  {
+    date: "2024",
+    title: "Embajador de Marca",
+    company: "Oppo",
+    description:
+      "Colaboración con Oppo en el lanzamiento del Oppo Watch X. Producción de contenido exclusivo, destacando funcionalidades, diseño y experiencia de uso del producto en diferentes plataformas sociales.",
+  },
+  
+];
+---
+
+<ol class="relative mt-16 space-y-8">
+  {EXPERIENCE.map((experience) => (
+    <li>
+      <ExperienceItem {...experience} />
+    </li>
+  ))}
+</ol>

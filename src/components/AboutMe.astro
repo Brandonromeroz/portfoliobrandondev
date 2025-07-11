@@ -1,0 +1,59 @@
+---
+const personalImageAlt = "Brandon";
+---
+
+<article class="flex flex-col md:flex-row items-center justify-center gap-12 max-w-5xl mx-auto px-6 py-16 text-gray-800 dark:text-gray-200">
+  <div
+    class="md:w-1/2 order-2 md:order-1 opacity-0 animate-fadeInUp text-lg leading-relaxed"
+    style="animation-fill-mode: forwards; animation-duration: 0.8s;"
+  >
+    <p>
+      Comencé en el desarrollo web hace más de 3 años y he liderado proyectos como <strong class="text-yellow-600 font-mono">SKYDELIVER</strong>, una plataforma de entregas con drones.
+    </p>
+    <p>
+      creé la plataforma <strong class="text-yellow-600 font-mono">E-LEARNING</strong>, con módulos interactivos y pasarelas de pago.
+    </p>
+    <p>
+      Comparto contenido sobre tecnología en <strong class="text-yellow-600 font-mono">YouTube, TikTok e Instagram</strong> para inspirar y educar a la comunidad tech.
+    </p>
+  </div>
+
+  <img
+    src="/mee.jpg"
+    alt={personalImageAlt}
+    width="260"
+    height="260"
+    loading="lazy"
+    class="order-1 md:order-2 w-64 h-64 object-cover object-top rounded-3xl bg-black/10 dark:bg-yellow-200/20 ring-2 ring-yellow-600 dark:ring-yellow-200 shadow-lg rotate-3 transition-transform duration-500 ease-in-out hover:rotate-0 hover:scale-105 opacity-0 animate-fadeIn"
+    style="animation-fill-mode: forwards; animation-duration: 0.8s; animation-delay: 0.4s;"
+  />
+</article>
+
+<style>
+  @keyframes fadeInUp {
+    0% {
+      opacity: 0;
+      transform: translateY(24px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  .animate-fadeInUp {
+    animation-name: fadeInUp;
+  }
+  .animate-fadeIn {
+    animation-name: fadeIn;
+  }
+</style>

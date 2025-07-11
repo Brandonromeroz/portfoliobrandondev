@@ -1,0 +1,30 @@
+---
+const skills = [
+  { name: "Astro", level: 85 },
+  { name: "React", level: 80 },
+  { name: "MongoDB", level: 75 },
+  { name: "Figma", level: 70 },
+  { name: "Next.js", level: 80 },
+];
+---
+
+<section class="max-w-3xl mx-auto space-y-5">
+  {skills.map(skill => (
+    <div>
+      <div class="flex justify-between mb-1">
+        <span class="font-medium text-gray-800 dark:text-gray-200">{skill.name}</span>
+        <span class="text-sm text-gray-600 dark:text-gray-400">{skill.level}%</span>
+      </div>
+      <div class="w-full bg-gray-300 dark:bg-gray-700 rounded-full h-2">
+        <div 
+          class="bg-indigo-600 h-2 rounded-full transition-all duration-1000"
+          style={`width: ${skill.level}%;`}
+          aria-valuenow={skill.level}
+          aria-valuemin="0"
+          aria-valuemax="100"
+          role="progressbar"
+        ></div>
+      </div>
+    </div>
+  ))}
+</section>

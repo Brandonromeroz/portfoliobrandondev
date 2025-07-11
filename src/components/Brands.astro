@@ -1,0 +1,50 @@
+---
+import { getSubscriberCount } from "../lib/loadSubs";
+
+const subscriberCount = await getSubscriberCount();
+
+const brands = [
+  { name: "Oppo", logo: "/projects/oppo.png", url: "https://www.oppo.com", collaboration: "Embajador de marca y reviews de productos" },
+  { name: "Xiaomi", logo: "/projects/xiaomi.png", url: "https://www.mi.com", collaboration: "Unboxing y comparativas de gadgets" },
+  { name: "Samsung", logo: "/projects/samsung.png", url: "https://www.samsung.com", collaboration: "Colaboraciones y sorteos" },
+  { name: "Soundpeats", logo: "/projects/soundpeats.png", url: "https://www.soundpeatsaudio.com", collaboration: "Reviews de auriculares" },
+  { name: "OnePlus", logo: "/projects/oneplus.png", url: "https://www.oneplus.com", collaboration: "Análisis de dispositivos y giveaways" },
+];
+---
+
+<section class="max-w-4xl mx-auto text-center space-y-8 py-12">
+  <div>
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white">¡Gracias por tu apoyo! 🙌</h2>
+    <p class="text-lg text-gray-700 dark:text-gray-300">
+      Ya somos <span class="text-blue-600 dark:text-blue-400 font-semibold">
+        {Intl.NumberFormat().format(Number(subscriberCount))}
+      </span> suscriptores en YouTube 🎉
+    </p>
+  </div>
+
+  <div class="flex flex-wrap justify-center items-center gap-8">
+    {brands.map((brand) => (
+      <a
+        href={brand.url}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label={`Sitio oficial de ${brand.name}, colaboración con Somos Brandon y Rubén TV`}
+        title={brand.collaboration}
+        class="transition-transform duration-300 ease-in-out hover:scale-110"
+      >
+        <div
+          class="w-24 h-24 flex items-center justify-center rounded-xl shadow-md
+                 bg-[var(--bg-color)] hover:bg-[var(--bg-hover-color)] transition-colors duration-300 overflow-hidden"
+        >
+          <img
+            src={brand.logo}
+            alt={brand.name}
+            class="w-full h-full object-cover"
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+      </a>
+    ))}
+  </div>
+</section>

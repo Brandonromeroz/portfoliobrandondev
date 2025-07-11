@@ -1,0 +1,207 @@
+---
+import GitHub from "./icons/GitHub.astro";
+import CSS from "./icons/CSS.astro";
+import Link from "./icons/Link.astro";
+import LinkButton from "./LinkButton.astro";
+import ReactIcon from "./icons/React.astro";
+import NextIcon from "./icons/Next.astro";
+import ViteIcon from "./icons/Vite.astro";
+import MongoIcon from "./icons/Mongo.astro";
+
+// Etiquetas con estilos e iconos
+const TAGS = {
+  CSS: {
+    name: "CSS",
+    class: "bg-blue-500 text-white",
+    icon: CSS,
+  },
+  NEXT: {
+    name: "Next.js",
+    class: "bg-black text-white",
+    icon: NextIcon,
+  },
+  REACT: {
+    name: "React",
+    class: "bg-blue-300 text-black",
+    icon: ReactIcon,
+  },
+  VITE: {
+    name: "Vite",
+    class: "bg-purple-500 text-white",
+    icon: ViteIcon,
+  },
+  MONGO: {
+    name: "MongoDB",
+    class: "bg-green-600 text-white",
+    icon: MongoIcon,
+  },
+  HTML_CSS: {
+    name: "HTML & CSS",
+    class: "bg-orange-500 text-white",
+    icon: CSS,
+  },
+};
+
+// Proyectos ordenados por fecha (descendente)
+const PROJECTS = [
+  {
+    title: "SKYDELIVER - Plataforma de entrega con drones",
+    date: "2025-04",
+    description:
+      "Desarrollo de plataforma web moderna con Next.js y React. Implementa gestión de pedidos, comunicación con drones vía API, actualización en tiempo real, base de datos MongoDB y arquitectura rápida con Vite.",
+    link: "",
+    github: "",
+    image: "/projects/skydeliver.png",
+    tags: [TAGS.NEXT, TAGS.REACT, TAGS.VITE, TAGS.MONGO],
+  },
+  {
+    title: "ComeBarato MX - Plataforma para encontrar comida económica en Tecámac",
+    date: "2025-08",
+    description:
+      "Sitio web que permite a estudiantes y usuarios descubrir lugares económicos para comer en Tecámac y Ecatepec. Diseño moderno con colores naranja degradado, HTML y CSS puro, enfocada en experiencia amigable para el usuario.",
+    link: "https://comebaratomx.netlify.app/",
+    github: "",
+    image: "/projects/comebaratomx.png",
+    tags: [TAGS.HTML_CSS],
+  },
+  {
+    title: "Biblioteca Digital - Sistema de gestión de libros",
+    date: "2023-12",
+    description:
+      "Sistema desarrollado con Laravel 8 y HTML para gestionar y mostrar libros en línea. Creado durante mi servicio social en la Universidad Politécnica de Tecámac.",
+    link: "https://bibliotecaupt.netlify.app/",
+    github: "https://github.com/Brandonromeroz/Biblioteca-Digital.git",
+    image: "/projects/blb.png",
+    tags: [TAGS.CSS],
+  },
+].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+
+// GitHub personal
+const PERSONAL_GITHUB = "https://github.com/Brandonromeroz";
+
+// Recuperar tag seleccionado vía POST
+let selectedTag: typeof TAGS[keyof typeof TAGS] | null = null;
+
+if (Astro.request?.method === "POST") {
+  const formData = await Astro.request.formData();
+  const selectedTagName = formData.get("selectedTag");
+  selectedTag =
+    Object.values(TAGS).find((tag) => tag.name === selectedTagName) ?? null;
+}
+---
+
+<style>
+  @keyframes fadeInUp {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes fadeIn {
+    0% { opacity: 0; transform: scale(0.95); }
+    100% { opacity: 1; transform: scale(1); }
+  }
+
+  .animate-fadeInUp {
+    animation: fadeInUp 0.6s ease forwards;
+  }
+
+  .animate-scaleUp {
+    animation: fadeIn 0.3s ease forwards;
+  }
+
+  button:hover,
+  .project-image:hover {
+    transform: scale(1.05);
+    transition: transform 0.3s ease;
+  }
+</style>
+
+<div class="flex flex-col gap-y-12">
+  <!-- Filtros por tags -->
+  <div class="flex flex-wrap gap-3 mb-6">
+    {Object.values(TAGS).map((tag) => (
+      <form method="post" style="display:inline;">
+        <button
+          type="submit"
+          name="selectedTag"
+          value={tag.name}
+          title={`Filtrar por ${tag.name}`}
+          aria-label={`Filtrar por ${tag.name}`}
+          class={`rounded-full px-4 py-1 text-sm border transition-transform duration-300 ease-in-out
+            ${selectedTag?.name === tag.name
+              ? `${tag.class} animate-scaleUp`
+              : "border-gray-300 text-gray-700 dark:text-gray-300 dark:border-gray-600"}`}
+        >
+          {tag.name}
+        </button>
+      </form>
+    ))}
+  </div>
+
+  <!-- Lista de proyectos -->
+  {PROJECTS.filter((p) =>
+    !selectedTag || p.tags.some((tag) => tag.name === selectedTag?.name)
+  ).map(({ image, title, description, tags, link, github, date }, i) => (
+    <article
+      class="flex flex-col space-y-8 md:flex-row md:space-x-8 opacity-0 animate-fadeInUp"
+      style={`animation-delay: ${i * 0.15}s; animation-fill-mode: forwards;`}
+    >
+      <div class="w-full md:w-1/2">
+        <div class="relative flex flex-col items-center shadow-xl overflow-hidden rounded-xl group">
+          <img
+            alt={title}
+            class="object-cover w-full h-56 sm:h-full md:scale-110 project-image"
+            loading="lazy"
+            src={image}
+          />
+        </div>
+      </div>
+
+      <div class="w-full md:w-1/2 md:max-w-lg">
+        <h3 class="text-2xl font-bold text-gray-800 dark:text-gray-100">{title}</h3>
+        <p class="text-sm text-gray-500 dark:text-gray-400 mb-1">
+          {new Date(date).toLocaleDateString("es-MX", {
+            year: "numeric",
+            month: "long",
+          })}
+        </p>
+
+        <ul class="flex flex-row gap-2 mt-2 mb-2">
+          {tags.map((tag) => (
+            <li>
+              <span class={`flex items-center gap-2 rounded-full text-xs ${tag.class} py-1 px-2`}>
+                <tag.icon class="size-4" />
+                {tag.name}
+              </span>
+            </li>
+          ))}
+        </ul>
+
+        <p class="mt-2 text-gray-700 dark:text-gray-400">{description}</p>
+
+        <footer class="flex items-end justify-start mt-4 gap-x-4">
+          {github && (
+            <LinkButton href={github}>
+              <GitHub class="size-6" />
+              Code
+            </LinkButton>
+          )}
+          {link && (
+            <LinkButton href={link}>
+              <Link class="size-4" />
+              Preview
+            </LinkButton>
+          )}
+        </footer>
+      </div>
+    </article>
+  ))}
+
+  <!-- GitHub Footer -->
+  <footer class="flex items-center justify-center mt-8">
+    <LinkButton href={PERSONAL_GITHUB}>
+      <GitHub class="size-6" />
+      Mi GitHub
+    </LinkButton>
+  </footer>
+</div>
