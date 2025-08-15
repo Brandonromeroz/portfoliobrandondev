@@ -9,7 +9,7 @@ import SocialPill from "@/components/SocialPill.astro"
 <div class="max-w-xl">
   <div class="flex gap-4 mb-4 items-center">
     <img
-      class="rounded-full shadow-lg w-16 h-16 object-cover object-top"
+      class="rounded-full shadow-lg w-16 h-16 object-cover object-top border-2 border-white/10 dark:border-gray-700/50"
       src="/devbran.jpg"
       alt={personalImageAlt}
     />
@@ -17,19 +17,19 @@ import SocialPill from "@/components/SocialPill.astro"
       href="https://www.linkedin.com/in/brandon-romero-zavala-8247a6267/"
       target="_blank"
       rel="noopener"
-      class="flex items-center transition md:justify-center md:hover:scale-105"
+      class="flex items-center transition-transform hover:scale-[1.03] active:scale-95"
     >
       <Badge>Disponible para colaborar</Badge>
     </a>
   </div>
 
-  <h1 class="text-4xl font-bold tracking-tight text-gray-800 sm:text-5xl dark:text-white">
+  <h1 class="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl dark:text-white">
     Brandon Romero Zavala
   </h1>
 
-  <p class="mt-6 text-xl text-gray-800 dark:[&>strong]:text-yellow-600 [&>strong]:text-yellow-500 [&>strong]:font-semibold dark:text-gray-300">
-    <strong>Ingeniero en Software</strong> con +3 años de experiencia.<br />
-    Desarrollo sitios web y creo contenido sobre tecnología en <strong>YouTube</strong> y redes sociales. 🚀🎥
+  <p class="mt-6 text-xl text-gray-700 dark:text-gray-300 [&>strong]:font-semibold">
+    <strong class="text-blue-600 dark:text-cyan-400">Ingeniero de Software</strong> apasionado por el desarrollo web<br />
+    y la creación de contenido técnico en <strong class="text-violet-600 dark:text-fuchsia-400">YouTube</strong> 🚀
   </p>
 
   <nav class="flex flex-wrap gap-4 mt-8">

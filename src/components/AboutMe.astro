@@ -1,59 +1,33 @@
 ---
-const personalImageAlt = "Brandon";
+const personalImageAlt = "Brandon Romero - Desarrollador y Creador Tech";
 ---
 
-<article class="flex flex-col md:flex-row items-center justify-center gap-12 max-w-5xl mx-auto px-6 py-16 text-gray-800 dark:text-gray-200">
-  <div
-    class="md:w-1/2 order-2 md:order-1 opacity-0 animate-fadeInUp text-lg leading-relaxed"
-    style="animation-fill-mode: forwards; animation-duration: 0.8s;"
-  >
-    <p>
-      Comencé en el desarrollo web hace más de 3 años y he liderado proyectos como <strong class="text-yellow-600 font-mono">SKYDELIVER</strong>, una plataforma de entregas con drones.
+<article class="flex flex-col md:flex-row items-center justify-center gap-8 max-w-4xl mx-auto px-4 py-12">
+  <!-- Text Content -->
+  <div class="md:w-1/2 order-2 md:order-1 text-gray-800 dark:text-gray-200">
+    <p class="text-lg mb-4">
+      Soy un  apasionado por la tecnología <strong class="text-blue-600 dark:text-cyan-400">  Hoy combino desarrollo de software con la creación</strong>  de contenido técnico.
     </p>
-    <p>
-      creé la plataforma <strong class="text-yellow-600 font-mono">E-LEARNING</strong>, con módulos interactivos y pasarelas de pago.
+    
+    <p class="text-lg mb-4">
+      He liderado proyectos innovadores como sistemas de entrega con drones y plataformas educativas, siempre buscando llevar ideas disruptivas a producción.
     </p>
-    <p>
-      Comparto contenido sobre tecnología en <strong class="text-yellow-600 font-mono">YouTube, TikTok e Instagram</strong> para inspirar y educar a la comunidad tech.
+
+    <p class="text-lg">
+      Como <strong class="text-blue-500 dark:text-cyan-300">creador</strong>, produzco contenido que acerca la tecnología a la comunidad hispana, colaborando directamente con marcas líderes como OPPO México.
     </p>
   </div>
 
-  <img
-    src="/meee.jpg"
-    alt={personalImageAlt}
-    width="260"
-    height="260"
-    loading="lazy"
-    class="order-1 md:order-2 w-64 h-64 object-cover object-top rounded-3xl bg-black/10 dark:bg-yellow-200/20 ring-2 ring-yellow-600 dark:ring-yellow-200 shadow-lg rotate-3 transition-transform duration-500 ease-in-out hover:rotate-0 hover:scale-105 opacity-0 animate-fadeIn"
-    style="animation-fill-mode: forwards; animation-duration: 0.8s; animation-delay: 0.4s;"
-  />
+  <!-- Profile Image -->
+  <div class="order-1 md:order-2 relative group">
+    <div class="absolute -inset-1 bg-gradient-to-r from-blue-500 to-violet-500 dark:from-cyan-400 dark:to-fuchsia-500 rounded-2xl opacity-75 blur-sm"></div>
+    <img
+      src="/meeeee.jpg"
+      alt={personalImageAlt}
+      width="200"
+      height="200"
+      loading="lazy"
+      class="relative w-48 h-48 object-cover object-top rounded-2xl bg-white dark:bg-gray-800 ring-2 ring-white dark:ring-gray-800 shadow-lg"
+    />
+  </div>
 </article>
-
-<style>
-  @keyframes fadeInUp {
-    0% {
-      opacity: 0;
-      transform: translateY(24px);
-    }
-    100% {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-  @keyframes fadeIn {
-    0% {
-      opacity: 0;
-      transform: scale(0.95);
-    }
-    100% {
-      opacity: 1;
-      transform: scale(1);
-    }
-  }
-  .animate-fadeInUp {
-    animation-name: fadeInUp;
-  }
-  .animate-fadeIn {
-    animation-name: fadeIn;
-  }
-</style>
