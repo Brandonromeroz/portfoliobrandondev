@@ -14,6 +14,7 @@ export async function getSubscriberCount() {
   try {
     const res = await fetch(url);
     const data = await res.json();
+    console.log("📊 Datos API:", JSON.stringify(data, null, 2));
     return data.items?.[0]?.statistics?.subscriberCount || "0";
   } catch (error) {
     console.error("Error al obtener suscriptores:", error);
